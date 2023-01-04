@@ -251,7 +251,7 @@ class Connection
         }
 
         $response = $e->getResponse();
-        Psr7\rewind_body($response);
+        Message::rewindBody($response);
         $responseBody = $response->getBody()->getContents();
         $decodedResponseBody = json_decode($responseBody, true);
 
