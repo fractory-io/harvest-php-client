@@ -230,7 +230,7 @@ class Connection
     private function parseResponse(Response $response)
     {
         try {
-            Message::rewindBody($response);
+            Psr7\Message::rewindBody($response);
             $json = json_decode($response->getBody()->getContents(), true);
 
             return $json;
@@ -251,7 +251,7 @@ class Connection
         }
 
         $response = $e->getResponse();
-        Message::rewindBody($response);
+        Psr7\Message::rewindBody($response);
         $responseBody = $response->getBody()->getContents();
         $decodedResponseBody = json_decode($responseBody, true);
 
